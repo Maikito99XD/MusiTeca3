@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Anyade Playlist</title>
+</head>
+<body>
+	<form class="form-horizontal">
+<fieldset>
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="NombrePlaylist">Nombre</label>  
+  <div class="col-md-4">
+  <input id="NombrePlaylist" name="NombrePlaylist" type="text" placeholder="NombrePlaylist" class="form-control input-md" required="">
+  <span class="help-block">Ayuda</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="PlaylistValoracion">Valoracion</label>  
+  <div class="col-md-4">
+  <input id="PlaylistValoracion" name="PlaylistValoracion" type="text" placeholder="Valoracion" class="form-control input-md">
+  <span class="help-block">Ayuda</span>  
+  </div>
+</div>
+
+<!-- Button Drop Down -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="PlayListCanciones">CancionesParaPlaylist</label>
+  <div class="col-md-4">
+    <div class="input-group">
+      <input id="PlayListCanciones" name="PlayListCanciones" class="form-control" placeholder="Canciones" type="text">
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          Canciones
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu pull-right">
+          <li><a href="#">Option one</a></li>
+          <li><a href="#">Option two</a></li>
+          <li><a href="#">Option three</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="EnviarPlaylist"></label>
+  <div class="col-md-4">
+    <button id="EnviarPlaylist" name="EnviarPlaylist" class="btn btn-info">Enviar</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+	
+</body>
+</html>
