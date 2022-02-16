@@ -16,7 +16,7 @@ public List<Cancion> findByCategoria(Cancion cancion);
 	public List<Long> obtenerIds();
 	
 	@Query("select c from cancion c where c.id = ?1")
-	public List<Cancion> findByCancionId(Long playlistId);
+	public List<Cancion> findCancionById(Long cancion);
 	
 	
 	@Query("select count(c) from cancion c where c.playlist.id = ?1")
