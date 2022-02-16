@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.multitiendaMike.modelo.entidades.Playlist;
+import es.multitiendaMike.hibernate.Playlist;
 import es.multitiendaMike.modelo.repositorios.PlayListRepository;
 
 

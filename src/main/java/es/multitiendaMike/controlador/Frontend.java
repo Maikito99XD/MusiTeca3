@@ -23,23 +23,7 @@ import es.multitiendaMike.modelo.servicios.PlayListService;
 @Controller
 @RequestMapping("/")
 public class Frontend {
-	
-	@Autowired
-	private PlayListService playlistService;
-	
-	@GetMapping({"/categorias"})
-	public String categorias(Model model) throws MalformedURLException {
-		InetAddress addr=null;
-		String hostnameCanonical=null;
-		String hostname=null;
-		byte[] address = null;
-		final String currentURL = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
-		URL requestURL = new URL(currentURL);
-		model.addAttribute("host",requestURL.getHost());
-		model.addAttribute("playlist",playlistService.findAll());
-		return "info/categorias";
-	}
-	
+		
 	
 	@GetMapping({"/","","/home","/inicio","/index"})
 	public String inicio (Model model) throws MalformedURLException {

@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import es.multitiendaMike.modelo.entidades.Playlist;
+import es.multitiendaMike.hibernate.Playlist;
 
 @Repository
 public class CategoriaDaoImpl implements IPlayListDao {

@@ -5,7 +5,8 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import es.multitiendaMike.modelo.entidades.Playlist;
+import es.multitiendaMike.hibernate.Playlist;
+
 
 public interface PlayListRepository extends JpaRepository<Playlist, Long> {
 	
@@ -19,5 +20,6 @@ public interface PlayListRepository extends JpaRepository<Playlist, Long> {
 	
 	@Query("select count(c) from cancion c where c.playlist = ?1")
 	public Long findNumCancionesByPlaylist(Long playListId);
+	
 
 }

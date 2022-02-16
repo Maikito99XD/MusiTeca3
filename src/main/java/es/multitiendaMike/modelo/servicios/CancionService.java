@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import es.multitiendaMike.modelo.entidades.Cancion;
-import es.multitiendaMike.modelo.repositorios.CancionRepository;
 
+import es.multitiendaMike.hibernate.Cancion;
+import es.multitiendaMike.modelo.repositorios.CancionRepository;
 
 
 	@Service
@@ -32,8 +32,9 @@ import es.multitiendaMike.modelo.repositorios.CancionRepository;
 			repositorioCancion.delete(result);
 			return result;
 		}
-		
+		/*
 		public int numeroCancion(Cancion cancion) {
 			return repositorioCancion.findNumCancionesByPlaylist(cancion);
 		}
+		*/
 	}
