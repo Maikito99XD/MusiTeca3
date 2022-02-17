@@ -34,6 +34,6 @@ public class Backend {
 	public String listadoCanciones(Model model) throws MalformedURLException{
 		
 		//model.addAttribute("listarCanciones",cancionService.findAll());
-		return "backend/listadoCanciones";
+		return "backend/listadoCanciones/listadoCanciones";
 	}
 }
