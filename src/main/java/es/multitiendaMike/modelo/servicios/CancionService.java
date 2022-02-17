@@ -32,9 +32,11 @@ import es.multitiendaMike.modelo.repositorios.CancionRepository;
 			repositorioCancion.delete(result);
 			return result;
 		}
-		/*
-		public int numeroCancion(Cancion cancion) {
+		public Long numeroCancion(Long cancion) {
 			return repositorioCancion.findNumCancionesByPlaylist(cancion);
 		}
-		*/
+		
+		public String findByGenero(Long cancionId) {
+			return repositorioCancion.findByGenero(cancionId);
+		}
 	}

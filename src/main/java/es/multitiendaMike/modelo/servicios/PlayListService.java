@@ -24,7 +24,7 @@ public class PlayListService {
 		return repositorioPlaylist.findByCategoria(playlist);
 	}
 	
-	public List<Playlist> findAllByPlaylist(Long categoriaId) {
+	public List<Playlist> findAllByPlaylistId(Long categoriaId) {
 		return repositorioPlaylist.findByCategoriaId(categoriaId);
 	}
 	
