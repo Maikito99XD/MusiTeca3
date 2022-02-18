@@ -9,6 +9,9 @@ import es.multitiendaMike.hibernate.Playlist;
 
 
 public interface PlayListRepository extends JpaRepository<Playlist, Long> {
+	
+	@Query("select * from playlist")
+	public List<Playlist> obtenerPlaylist();
 	/*
 	@Query("select p.id from playlist p")
 	public List<Long> obtenerIds();

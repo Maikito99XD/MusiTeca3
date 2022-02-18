@@ -23,6 +23,12 @@ public class Playlist implements java.io.Serializable {
 		this.valoracion = valoracion;
 	}
 
+	public Playlist(long id, String nombre, int valoracion) {
+		this.id = id;
+		this.nombre = nombre;
+		this.valoracion = valoracion;
+	}
+	
 	public Playlist(long id, String nombre, int valoracion, Set cancions) {
 		this.id = id;
 		this.nombre = nombre;

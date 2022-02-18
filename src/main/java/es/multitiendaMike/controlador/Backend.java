@@ -36,6 +36,11 @@ public class Backend {
 		
 		return "/backend/admin";
 	}
+	
+	@GetMapping({"/playlist/new"})
+	public String formularioPlaylist(Model model) throws MalformedURLException{
+		return "/backend/formularios/formularioAddPlaylist";
+	}
 	/*
 	@GetMapping({"/admin/listadoCanciones"})
 	public String listadoCanciones(Model model) throws MalformedURLException{

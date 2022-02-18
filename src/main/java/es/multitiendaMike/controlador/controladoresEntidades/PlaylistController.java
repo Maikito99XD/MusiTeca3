@@ -8,10 +8,20 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import es.multitiendaMike.hibernate.Playlist;
+import es.multitiendaMike.modelo.servicios.PlayListService;
 //import es.multitiendaMike.modelo.servicios.PlayListService;
 
 @Controller
 public class PlaylistController {
+	
+	@Autowired
+	private PlayListService playlistService;
+	
+	@GetMapping("/playlist/list")
+	public String listadoPlaylist(Model model) {
+		model.addAttribute("listaPlaylist", playlistService.findAll());
+		return "/backend/listados/listadoPlaylist";
+	}
 	/*
 	@Autowired
 	private PlayListService playlistService;
