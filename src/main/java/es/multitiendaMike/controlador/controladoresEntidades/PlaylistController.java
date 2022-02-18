@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import es.multitiendaMike.hibernate.Playlist;
@@ -21,6 +22,36 @@ public class PlaylistController {
 	public String listadoPlaylist(Model model) {
 		model.addAttribute("listaPlaylist", playlistService.findAll());
 		return "/backend/listados/listadoPlaylist";
+	}
+	
+	@GetMapping("/playlist/nuevaPlaylist")
+	public String nuevaPlaylistForm(Model model) {
+		model.addAttribute("playlistForm", new Playlist());
+		return "/backend/formularios/formularioAddPlaylist";
+	}
+	
+	@PostMapping("/playlist/new/summit")
+	public String nuevaPlaylistSubmit(@ModelAttribute("playlistForm") Playlist nuevaPlaylist) {
+		playlistService.add(nuevaPlaylist);
+		return "redirect:/playlist/list";
+	}
+	
+	@GetMapping("/playlist/edit")
+	public String editarPlaylistForm(@PathVariable long id, Model model) {
+		
+		Playlist playlist = playlistService.findById(id);
+		if(playlist != null) {
+			model.addAttribute("playlistForm", new Playlist());
+			return "/backend/formularios/formularioAddPlaylist";
+		}else {
+			return "redirecct://playlist/nuevaPlaylist";
+		}
+	}
+	
+	@PostMapping("/playlist/edit/summit")
+	public String editarPlaylistSubmit(@ModelAttribute("playlistForm") Playlist nuevaPlaylist) {
+		playlistService.edit(nuevaPlaylist);
+		return "redirect:/playlist/list";
 	}
 	/*
 	@Autowired

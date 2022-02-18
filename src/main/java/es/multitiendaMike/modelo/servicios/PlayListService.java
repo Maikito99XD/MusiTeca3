@@ -17,10 +17,6 @@ import es.multitiendaMike.modelo.repositorios.PlayListRepository;
 @Service
 public class PlayListService {
 	
-	
-	//@Autowired
-	//private PlayListRepository repositorioPlaylist;
-	
 	private List<Playlist> repositorio = new ArrayList<>();
 	
 	
@@ -32,15 +28,6 @@ public class PlayListService {
 	public List<Playlist> findAll() {
 		return repositorio;
 	}
-	/*
-	public Playlist save(Playlist playlist) {
-		return repositorioPlaylist.save(playlist);
-	}
-	
-	public List<Playlist> findAll2() {
-		return repositorioPlaylist.obtenerPlaylist();
-	}
-	*/
 	
 	@PostConstruct
 	public void init() {
@@ -50,6 +37,41 @@ public class PlayListService {
 						new Playlist(3,"Ángel Antúnez",4)						
 						)
 				);
+	}
+	
+	public Playlist findById(long id) {
+		Playlist result = null;
+		boolean encontrado = false;
+		int i = 0;
+		while (!encontrado && i < repositorio.size()) {
+			if (repositorio.get(i).getId() == id) {
+				encontrado = true;
+				result = repositorio.get(i);
+			} else {
+				i++;
+			}
+		}
+		
+		return result;
+	}
+	
+	public Playlist edit(Playlist e) {
+		boolean encontrado = false;
+		int i = 0;
+		while (!encontrado && i < repositorio.size()) {
+			if (repositorio.get(i).getId() == e.getId()) {
+				encontrado = true;
+				repositorio.remove(i);
+				repositorio.add(i, e);
+			} else {
+				i++;
+			}
+		}
+		
+		if (!encontrado)
+			repositorio.add(e);
+		
+		return e;
 	}
 	/*
 	@Autowired
