@@ -49,13 +49,13 @@
 	</nav>
 
 	<div class="container">
-
+		<h1 h:text="${playlistForm.id != 0} ? 'Editar playlist' : 'Nueva playlist'">Nueva playlist></h1>
 		<div class="starter-template">
 			<div class="row">
 				<div class="col-md-offset-2 col-md-8">
 					<form method="post" action="#" th:action="${playlistForm.id != 0} ? @{/playlist/edit/summit} : @{/playlist/new/summit}"
 						th:object="${playlistForm}">
-						<h1 th:text="${playlistForm.id != 0} ? 'Editar playlist' : 'Nueva playlist'">Nueva playlist</h1>
+						<h1 th:text="${playlistForm.id != 0} ? 'Editar playlist' : 'Nueva playlist' ">Nueva playlist</h1>
 						<div class="form-group">
 							<label for="id">ID</label> <input type="text"
 								class="form-control" id="id" placeholder="1" th:field="*{id}"

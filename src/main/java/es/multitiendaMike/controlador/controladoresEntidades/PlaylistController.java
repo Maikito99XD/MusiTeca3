@@ -36,7 +36,7 @@ public class PlaylistController {
 		return "redirect:/playlist/list";
 	}
 	
-	@GetMapping("/playlist/edit")
+	@GetMapping("/playlist/edit/{id}")
 	public String editarPlaylistForm(@PathVariable long id, Model model) {
 		
 		Playlist playlist = playlistService.findById(id);
@@ -49,8 +49,8 @@ public class PlaylistController {
 	}
 	
 	@PostMapping("/playlist/edit/summit")
-	public String editarPlaylistSubmit(@ModelAttribute("playlistForm") Playlist nuevaPlaylist) {
-		playlistService.edit(nuevaPlaylist);
+	public String editarPlaylistSubmit(@ModelAttribute("playlistForm") Playlist playlist) {
+		playlistService.edit(playlist);
 		return "redirect:/playlist/list";
 	}
 	/*
