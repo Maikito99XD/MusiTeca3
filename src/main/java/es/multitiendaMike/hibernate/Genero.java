@@ -1,5 +1,6 @@
 package es.multitiendaMike.hibernate;
-// Generated 18 feb 2022 15:29:31 by Hibernate Tools 5.5.7.Final
+// default package
+// Generated 18 feb 2022 17:00:30 by Hibernate Tools 5.5.7.Final
 
 import java.util.HashSet;
 import java.util.Set;

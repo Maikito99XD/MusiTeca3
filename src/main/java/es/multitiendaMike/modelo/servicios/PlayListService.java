@@ -9,8 +9,10 @@ import es.multitiendaMike.hibernate.Playlist;
 import es.multitiendaMike.modelo.repositorios.PlayListRepository;
 
 
+
 @Service
 public class PlayListService {
+	/*
 	@Autowired
 	private PlayListRepository repositorioPlaylist;
 	
@@ -21,7 +23,7 @@ public class PlayListService {
 	public List<Playlist> findAllByPlaylistId(Long categoriaId) {
 		return repositorioPlaylist.findByCategoriaId(categoriaId);
 	}
-	*/
+	
 	
 	public Playlist findById(Long id) {
 		return repositorioPlaylist.findById(id).orElse(null);
@@ -36,6 +38,8 @@ public class PlayListService {
 		repositorioPlaylist.delete(result);
 		return result;
 	}
+	*/
 	
 
 }
+

@@ -10,7 +10,7 @@ import es.multitiendaMike.modelo.repositorios.GeneroRepository;
 
 @Service
 public class GeneroService {
-	
+	/*
 	@Autowired
 	private GeneroRepository repositorioGenero;
 	
@@ -31,5 +31,6 @@ public class GeneroService {
 	public List<Genero> findAll() {
 		return repositorioGenero.findAll();
 	}	
+	*/
 	
 }

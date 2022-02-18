@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 18 feb 2022 15:29:31 by Hibernate Tools 5.5.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18 feb 2022 17:00:30 by Hibernate Tools 5.5.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
-    <class catalog="musiteca" dynamic-insert="false" dynamic-update="false" mutable="true" name="es.multitiendaMike.hibernate.Playlist" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="playlist">
+    <class catalog="musiteca" dynamic-insert="false" dynamic-update="false" mutable="true" name="Playlist" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="playlist">
         <id name="id" type="long">
             <column name="id"/>
             <generator class="assigned"/>
@@ -16,7 +16,7 @@
             <key on-delete="noaction">
                 <column name="fk_playlist"/>
             </key>
-            <one-to-many class="es.multitiendaMike.hibernate.Cancion" embed-xml="true" not-found="exception"/>
+            <one-to-many class="Cancion" embed-xml="true" not-found="exception"/>
         </set>
     </class>
 </hibernate-mapping>

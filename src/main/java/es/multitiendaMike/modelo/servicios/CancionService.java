@@ -11,7 +11,7 @@ import es.multitiendaMike.modelo.repositorios.CancionRepository;
 
 	@Service
 	public class CancionService {
-		
+		/*
 		@Autowired
 		private CancionRepository repositorioCancion;
 		
@@ -32,5 +32,5 @@ import es.multitiendaMike.modelo.repositorios.CancionRepository;
 			repositorioCancion.delete(result);
 			return result;
 		}
-		
+		*/
 	}

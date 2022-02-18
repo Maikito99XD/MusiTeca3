@@ -10,7 +10,6 @@ import es.multitiendaMike.hibernate.Cancion;
 
 public interface CancionRepository extends JpaRepository<Cancion, Long> {
 	
-	/*
 	@Query("select c.id from cancion c")
 	public List<Long> obtenerIds();
 	
@@ -20,6 +19,5 @@ public interface CancionRepository extends JpaRepository<Cancion, Long> {
 	
 	@Query("select count(c) from cancion c where c.playlist.id = ?1")
 	public Long findNumCancionesByPlaylist(Long cancionId);
-	*/
 	
 }
