@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 15 feb 2022 16:57:30 by Hibernate Tools 5.5.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18 feb 2022 15:29:31 by Hibernate Tools 5.5.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
     <class catalog="musiteca" dynamic-insert="false" dynamic-update="false" mutable="true" name="es.multitiendaMike.hibernate.Cancion" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="cancion">
-        <id name="id" type="java.lang.Long">
+        <id name="id" type="long">
             <column name="id"/>
-            <generator class="identity"/>
+            <generator class="assigned"/>
         </id>
-        <property generated="never" lazy="false" name="nombre" optimistic-lock="true" type="string" unique="false">
-            <column length="100" name="nombre" not-null="true"/>
-        </property>
+        <many-to-one class="es.multitiendaMike.hibernate.Genero" embed-xml="true" fetch="select" insert="true" name="genero" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="fk_genero"/>
+        </many-to-one>
+        <many-to-one class="es.multitiendaMike.hibernate.Playlist" embed-xml="true" fetch="select" insert="true" name="playlist" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="fk_playlist"/>
+        </many-to-one>
         <property generated="never" lazy="false" name="enlaceCancion" optimistic-lock="true" type="string" unique="false">
-            <column length="10000" name="enlaceCancion" not-null="true"/>
+            <column name="enlace_cancion"/>
         </property>
-        <property generated="never" lazy="false" name="fkPlaylist" optimistic-lock="true" type="int" unique="false">
-            <column name="fk_playlist" not-null="true"/>
-        </property>
-        <property generated="never" lazy="false" name="fkGenero" optimistic-lock="true" type="int" unique="false">
-            <column name="fk_genero" not-null="true"/>
+        <property generated="never" lazy="false" name="nombre" optimistic-lock="true" type="string" unique="false">
+            <column name="nombre"/>
         </property>
     </class>
 </hibernate-mapping>
