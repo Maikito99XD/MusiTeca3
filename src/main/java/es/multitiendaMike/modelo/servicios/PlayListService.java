@@ -73,6 +73,17 @@ public class PlayListService {
 		
 		return e;
 	}
+	
+	public void delete(Playlist playlist) {
+		boolean encontrado = false;
+		int i = 0;
+		while (!encontrado && i < repositorio.size()) {
+			if (repositorio.get(i).getId() == playlist.getId()) {
+				encontrado = true;
+				repositorio.remove(i);
+			}
+		}
+	}
 	/*
 	@Autowired
 	private PlayListRepository repositorioPlaylist;

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import es.multitiendaMike.hibernate.Playlist;
 import es.multitiendaMike.modelo.servicios.PlayListService;
@@ -53,6 +54,9 @@ public class PlaylistController {
 		playlistService.edit(playlist);
 		return "redirect:/playlist/list";
 	}
+	
+	
+	
 	/*
 	@Autowired
 	private PlayListService playlistService;
