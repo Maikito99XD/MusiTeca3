@@ -41,10 +41,10 @@ public class PlaylistController {
 		
 		Playlist playlist = playlistService.findById(id);
 		if(playlist != null) {
-			model.addAttribute("playlistForm", new Playlist());
+			model.addAttribute("playlistForm", playlist);
 			return "/backend/formularios/formularioAddPlaylist";
 		}else {
-			return "redirecct://playlist/nuevaPlaylist";
+			return "redirecct:/playlist/nuevaPlaylist";
 		}
 	}
 	
