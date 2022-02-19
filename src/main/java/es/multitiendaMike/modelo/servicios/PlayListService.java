@@ -32,9 +32,9 @@ public class PlayListService {
 	@PostConstruct
 	public void init() {
 		repositorio.addAll(
-				Arrays.asList(new Playlist(1,"Antonio García", 2),
-						new Playlist(2,"María López",3),
-						new Playlist(3,"Ángel Antúnez",4)						
+				Arrays.asList(new Playlist(1,"AC/DC", 5),
+						new Playlist(2,"Banda de musica",1),
+						new Playlist(3,"Bad bunny",3)						
 						)
 				);
 	}
@@ -82,6 +82,7 @@ public class PlayListService {
 				encontrado = true;
 				repositorio.remove(i);
 			}
+			i++;
 		}
 	}
 	/*
