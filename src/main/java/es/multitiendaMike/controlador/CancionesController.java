@@ -1,5 +1,7 @@
 package es.multitiendaMike.controlador;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,13 +10,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import es.multitiendaMike.entitys.Cancion;
+import es.multitiendaMike.entitys.Genero;
 import es.multitiendaMike.servicios.CancionService;
+import es.multitiendaMike.servicios.GeneroService;
 
 @Controller
 public class CancionesController {
-	/*
+	
 	@Autowired
 	CancionService cancionService;
+	
+	@Autowired
+	GeneroService generoService;
 	
 	@GetMapping("/cancion/list")
 	public String listadoCanciones(Model model) {
@@ -25,11 +33,20 @@ public class CancionesController {
 	@GetMapping("/cancion/nuevaCancion")
 	public String nuevaCancionForm(Model model) {
 		model.addAttribute("cancionForm", new Cancion());
-		return "/backend/formularios/formularioAddPlaylist";
+		return "/backend/formularios/formularioAddEditCancion";
 	}
 
 	@PostMapping("/cancion/new/summit")
 	public String nuevaCancionSubmit(@ModelAttribute("cancionForm") Cancion nuevaCancion) {
+		List<Genero> generos = generoService.findAll();
+		
+		for(Genero genero : generos) {
+			if(genero.getNombre().equals(nuevaCancion.getGenero().getNombre())) {
+				cancionService.save(nuevaCancion);
+				return "redirect:/cancion/list";
+			}
+		}
+		generoService.save(new Genero(nuevaCancion.getGenero().getNombre()));
 		cancionService.save(nuevaCancion);
 		return "redirect:/cancion/list";
 	}
@@ -40,7 +57,7 @@ public class CancionesController {
 		Cancion cancion = cancionService.findById(id);
 		if (cancion != null) {
 			model.addAttribute("cancionForm", cancion);
-			return "/backend/formularios/formularioAddPlaylist";
+			return "/backend/formularios/formularioAddEditCancion";
 		} else {
 			return "redirect:/cancion/nuevaCancion";
 		}
@@ -48,7 +65,7 @@ public class CancionesController {
 
 	@PostMapping("/cancion/edit/summit")
 	public String editarCancionSubmit(@ModelAttribute("cancionForm") Cancion cancion) {
-		//cancionService.edit(cancion);
+		cancionService.save(cancion);
 		return "redirect:/cancion/list";
 	}
 
@@ -68,5 +85,4 @@ public class CancionesController {
 		cancionService.delete(cancion);
 		return "redirect:/playlist/list";
 	}
-	*/
 }

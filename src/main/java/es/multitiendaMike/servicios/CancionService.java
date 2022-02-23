@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.multitiendaMike.entitys.Cancion;
+import es.multitiendaMike.entitys.Genero;
 import es.multitiendaMike.repositorios.CancionRepository;
+import es.multitiendaMike.repositorios.GeneroRepository;
 
 @Service
 public class CancionService {
@@ -14,9 +16,16 @@ public class CancionService {
 	@Autowired
 	private CancionRepository repositorioCancion;
 	
+	@Autowired
+	private GeneroRepository repositorioGenero;
+	
 	public List<Cancion> findAll() {
 		return repositorioCancion.findAll();
 	}	
+	
+	public List<Cancion> findByGenero(Genero genero) {
+		return this.repositorioCancion.findByGenero(genero);
+	}
 	
 	public Cancion save(Cancion cancion) {
 		return repositorioCancion.save(cancion);

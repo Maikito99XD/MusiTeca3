@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import es.multitiendaMike.entitys.Cancion;
 import es.multitiendaMike.entitys.PlayList;
 import es.multitiendaMike.repositorios.PlayListRepository;
 
@@ -21,6 +22,10 @@ public class PlayListService {
 	
 	public List<PlayList> findAll() {
 		return repositorioPlaylist.findAll();
+	}
+	
+	public List<PlayList> findByCancion(Cancion cancion) {
+		return repositorioPlaylist.findByCancion(cancion);
 	}
 	
 	public PlayList findById(Long id) {
