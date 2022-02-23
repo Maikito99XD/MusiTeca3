@@ -1,4 +1,4 @@
-package es.multitiendaMike.modelo.servicios;
+package es.multitiendaMike.servicios;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,38 +9,58 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.multitiendaMike.hibernate.Playlist;
-import es.multitiendaMike.modelo.repositorios.PlayListRepository;
-
+import es.multitiendaMike.entitys.PlayList;
+import es.multitiendaMike.repositorios.PlayListRepository;
 
 
 @Service
 public class PlayListService {
 	
-	private List<Playlist> repositorio = new ArrayList<>();
+	@Autowired
+	private PlayListRepository repositorioPlaylist;
+	
+	public List<PlayList> findAll() {
+		return repositorioPlaylist.findAll();
+	}
+	
+	public PlayList findById(Long id) {
+		return repositorioPlaylist.findById(id).orElse(null);
+	}
+	
+	public PlayList save(PlayList playList) {
+		return repositorioPlaylist.save(playList);
+	}
+	
+	public void delete(PlayList playList) {
+		repositorioPlaylist.delete(playList);
+	}
 	
 	
-	public Playlist add(Playlist e) {
+	/*
+	private List<PlayList> repositorio = new ArrayList<>();
+	
+	
+	public PlayList add(PlayList e) {
 		repositorio.add(e);
 		return e;
 	}
 	
-	public List<Playlist> findAll() {
+	public List<PlayList> findAll() {
 		return repositorio;
 	}
 	
 	@PostConstruct
 	public void init() {
 		repositorio.addAll(
-				Arrays.asList(new Playlist(1,"AC/DC", 5),
-						new Playlist(2,"Banda de musica",1),
-						new Playlist(3,"Bad bunny",3)						
+				Arrays.asList(new PlayList(1,"AC/DC", 5),
+						new PlayList(2,"Banda de musica",1),
+						new PlayList(3,"Bad bunny",3)						
 						)
 				);
 	}
 	
-	public Playlist findById(long id) {
-		Playlist result = null;
+	public PlayList findById(long id) {
+		PlayList result = null;
 		boolean encontrado = false;
 		int i = 0;
 		while (!encontrado && i < repositorio.size()) {
@@ -55,7 +75,7 @@ public class PlayListService {
 		return result;
 	}
 	
-	public Playlist edit(Playlist e) {
+	public PlayList edit(PlayList e) {
 		boolean encontrado = false;
 		int i = 0;
 		while (!encontrado && i < repositorio.size()) {
@@ -74,7 +94,7 @@ public class PlayListService {
 		return e;
 	}
 	
-	public void delete(Playlist playlist) {
+	public void delete(PlayList playlist) {
 		boolean encontrado = false;
 		int i = 0;
 		while (!encontrado && i < repositorio.size()) {
@@ -85,34 +105,7 @@ public class PlayListService {
 			i++;
 		}
 	}
-	/*
-	@Autowired
-	private PlayListRepository repositorioPlaylist;
-	
-	public List<Playlist> findAll() {
-		return repositorioPlaylist.findAll();
-	}
-	/*
-	public List<Playlist> findAllByPlaylistId(Long categoriaId) {
-		return repositorioPlaylist.findByCategoriaId(categoriaId);
-	}
-	
-	
-	public Playlist findById(Long id) {
-		return repositorioPlaylist.findById(id).orElse(null);
-	}
-	
-	public Playlist save(Playlist playlist) {
-		return repositorioPlaylist.save(playlist);
-	}
-	
-	public Playlist delete(Playlist playlist) {
-		Playlist result = findById(playlist.getId());
-		repositorioPlaylist.delete(result);
-		return result;
-	}
-	*/
-	
 
+	*/
 }
 

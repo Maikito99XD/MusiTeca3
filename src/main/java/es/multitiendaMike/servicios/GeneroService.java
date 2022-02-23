@@ -1,16 +1,16 @@
-package es.multitiendaMike.modelo.servicios;
+package es.multitiendaMike.servicios;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.multitiendaMike.hibernate.Genero;
-import es.multitiendaMike.modelo.repositorios.GeneroRepository;
+import es.multitiendaMike.entitys.Genero;
+import es.multitiendaMike.repositorios.GeneroRepository;
 
 @Service
 public class GeneroService {
-	/*
+	
 	@Autowired
 	private GeneroRepository repositorioGenero;
 	
@@ -18,10 +18,8 @@ public class GeneroService {
 		return repositorioGenero.save(genero);
 	}
 	
-	public Genero delete(Genero genero) {
-		Genero result = findById(genero.getId());
-		repositorioGenero.delete(result);
-		return result;
+	public void delete(Genero genero) {
+		repositorioGenero.delete(genero);
 	}
 	
 	public Genero findById(Long id) {
@@ -31,6 +29,4 @@ public class GeneroService {
 	public List<Genero> findAll() {
 		return repositorioGenero.findAll();
 	}	
-	*/
-	
 }

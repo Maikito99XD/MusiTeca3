@@ -42,7 +42,7 @@
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="/">Inicio</a></li>
-					<li><a href="/playlist/nuevaPlaylist">Nueva playlist</a></li>
+					<li><a href="/playlist/nuevaPlaylist">Nuevo genero</a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -52,22 +52,20 @@
 	<div class="container">
 
 		<div class="starter-template">
-			<h1>Listado de playlist</h1>
+			<h1>Listado de generos</h1>
 			<table class="table">
 				<thead>
 					<tr>
 						<th>ID</th>
 						<th>Nombre</th>
-						<th>Valoracion</th>
 						<th>Operaciones</th>
 				</thead>
 				<tbody>
-					<tr th:each="playlist : ${listaPlaylist}">
-						<td th:text="${playlist.id}">ID</td>
-						<td th:text="${playlist.nombre}">Banda rock</td>
-						<td th:text="${playlist.valoracion}">2</td>
-						<td><a class="btn btn-outline-info btn-info" th:href="@{/playlist/edit/{id}(id=${playlist.id})}"><i class="bi bi-pencil-square"></i></a>
-                        <a class="btn btn-outline-danger btn-danger" th:href="@{/playlist/delete/{id}(id=${playlist.id})}"><i class="bi bi-trash"></i></a></td>
+					<tr th:each="genero : ${listaGenero}">
+						<td th:text="${genero.id}">ID</td>
+						<td th:text="${genero.nombre}">Banda rock</td>
+						<td><a class="btn btn-outline-info btn-info" th:href="@{/genero/edit/{id}(id=${genero.id})}"><i class="bi bi-pencil-square"></i></a>
+                        <a class="btn btn-outline-danger btn-danger" th:href="@{/genero/delete/{id}(id=${genero.id})}"><i class="bi bi-trash"></i></a></td>
 					</tr>
 				</tbody>
 			</table>

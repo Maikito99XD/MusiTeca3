@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-02-2022 a las 20:48:17
+-- Tiempo de generación: 23-02-2022 a las 17:00:47
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.2
 
@@ -30,20 +30,16 @@ SET time_zone = "+00:00";
 CREATE TABLE `cancion` (
   `id` bigint(20) NOT NULL,
   `enlace_cancion` varchar(255) DEFAULT NULL,
-  `fk_genero` bigint(20) DEFAULT NULL,
-  `fk_playlist` bigint(20) DEFAULT NULL,
-  `nombre` varchar(255) DEFAULT NULL
+  `nombre` varchar(255) DEFAULT NULL,
+  `genero_id` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `cancion`
 --
 
-INSERT INTO `cancion` (`id`, `enlace_cancion`, `fk_genero`, `fk_playlist`, `nombre`) VALUES
-(1, 'enlace cancion', 1, 1, 'Cancion de rock'),
-(2, 'enlace cancion 2', 2, 2, 'Cancion de pop'),
-(3, 'enlace cancion 3', 3, 3, 'Cancion de reggeton'),
-(4, 'enlace cancion 4', 1, 1, 'Otra cancion de rock');
+INSERT INTO `cancion` (`id`, `enlace_cancion`, `nombre`, `genero_id`) VALUES
+(2, 'https://www.youtube.com/watch?v=hTWKbfoikeg', 'Feels Like Spirit', 1);
 
 -- --------------------------------------------------------
 
@@ -61,9 +57,7 @@ CREATE TABLE `genero` (
 --
 
 INSERT INTO `genero` (`id`, `nombre`) VALUES
-(1, 'Rock'),
-(2, 'Pop'),
-(3, 'reggeton');
+(1, 'Rock');
 
 -- --------------------------------------------------------
 
@@ -80,28 +74,37 @@ CREATE TABLE `hibernate_sequence` (
 --
 
 INSERT INTO `hibernate_sequence` (`next_val`) VALUES
-(1);
+(4);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `playlist`
+-- Estructura de tabla para la tabla `play_list`
 --
 
-CREATE TABLE `playlist` (
+CREATE TABLE `play_list` (
   `id` bigint(20) NOT NULL,
   `nombre` varchar(255) DEFAULT NULL,
   `valoracion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `playlist`
+-- Volcado de datos para la tabla `play_list`
 --
 
-INSERT INTO `playlist` (`id`, `nombre`, `valoracion`) VALUES
-(1, 'Canciones de pop', 2),
-(2, 'Canciones de michael jackson', 4),
-(3, 'Bandas de rock que me gustan', 5);
+INSERT INTO `play_list` (`id`, `nombre`, `valoracion`) VALUES
+(3, 'Rock', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `play_list_canciones`
+--
+
+CREATE TABLE `play_list_canciones` (
+  `play_list_id` bigint(20) NOT NULL,
+  `canciones_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Índices para tablas volcadas
@@ -112,8 +115,7 @@ INSERT INTO `playlist` (`id`, `nombre`, `valoracion`) VALUES
 --
 ALTER TABLE `cancion`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_genero` (`fk_genero`),
-  ADD KEY `fk_playlist` (`fk_playlist`);
+  ADD KEY `FKg3quqs0xh32l972wnn5mcu9a5` (`genero_id`);
 
 --
 -- Indices de la tabla `genero`
@@ -122,10 +124,17 @@ ALTER TABLE `genero`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `playlist`
+-- Indices de la tabla `play_list`
 --
-ALTER TABLE `playlist`
+ALTER TABLE `play_list`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `play_list_canciones`
+--
+ALTER TABLE `play_list_canciones`
+  ADD KEY `FKtir79vtcetnjob7jnxdu6fof3` (`canciones_id`),
+  ADD KEY `FKan9y6qngcaq61tvr8rnw354jy` (`play_list_id`);
 
 --
 -- Restricciones para tablas volcadas
@@ -135,8 +144,14 @@ ALTER TABLE `playlist`
 -- Filtros para la tabla `cancion`
 --
 ALTER TABLE `cancion`
-  ADD CONSTRAINT `cancion_ibfk_1` FOREIGN KEY (`fk_genero`) REFERENCES `genero` (`id`),
-  ADD CONSTRAINT `cancion_ibfk_2` FOREIGN KEY (`fk_playlist`) REFERENCES `playlist` (`id`);
+  ADD CONSTRAINT `FKg3quqs0xh32l972wnn5mcu9a5` FOREIGN KEY (`genero_id`) REFERENCES `genero` (`id`);
+
+--
+-- Filtros para la tabla `play_list_canciones`
+--
+ALTER TABLE `play_list_canciones`
+  ADD CONSTRAINT `FKan9y6qngcaq61tvr8rnw354jy` FOREIGN KEY (`play_list_id`) REFERENCES `play_list` (`id`),
+  ADD CONSTRAINT `FKtir79vtcetnjob7jnxdu6fof3` FOREIGN KEY (`canciones_id`) REFERENCES `cancion` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

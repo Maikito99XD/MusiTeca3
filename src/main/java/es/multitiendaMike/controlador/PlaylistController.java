@@ -1,4 +1,4 @@
-package es.multitiendaMike.controlador.controladoresEntidades;
+package es.multitiendaMike.controlador;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,66 +9,66 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import es.multitiendaMike.hibernate.Playlist;
-import es.multitiendaMike.modelo.servicios.PlayListService;
-//import es.multitiendaMike.modelo.servicios.PlayListService;
+import es.multitiendaMike.entitys.PlayList;
+import es.multitiendaMike.servicios.PlayListService;
 
 @Controller
+@RequestMapping("/playlist")
 public class PlaylistController {
 
 	@Autowired
 	private PlayListService playlistService;
-
-	@GetMapping("/playlist/list")
+	
+	@GetMapping("/list")
 	public String listadoPlaylist(Model model) {
 		model.addAttribute("listaPlaylist", playlistService.findAll());
 		return "/backend/listados/listadoPlaylist";
 	}
 
-	@GetMapping("/playlist/nuevaPlaylist")
+	@GetMapping("/nuevaPlaylist")
 	public String nuevaPlaylistForm(Model model) {
-		model.addAttribute("playlistForm", new Playlist());
+		model.addAttribute("playlistForm", new PlayList());
 		return "/backend/formularios/formularioAddPlaylist";
 	}
 
-	@PostMapping("/playlist/new/summit")
-	public String nuevaPlaylistSubmit(@ModelAttribute("playlistForm") Playlist nuevaPlaylist) {
-		playlistService.add(nuevaPlaylist);
+	@PostMapping("/new/summit")
+	public String nuevaPlaylistSubmit(@ModelAttribute("playlistForm") PlayList nuevaPlaylist) {
+		playlistService.save(nuevaPlaylist);
 		return "redirect:/playlist/list";
 	}
 
-	@GetMapping("/playlist/edit/{id}")
+	@GetMapping("/edit/{id}")
 	public String editarPlaylistForm(@PathVariable long id, Model model) {
 
-		Playlist playlist = playlistService.findById(id);
-		if (playlist != null) {
-			model.addAttribute("playlistForm", playlist);
+		PlayList playList = playlistService.findById(id);
+		if (playList != null) {
+			model.addAttribute("playlistForm", playList);
 			return "/backend/formularios/formularioAddPlaylist";
 		} else {
 			return "redirect:/playlist/nuevaPlaylist";
 		}
 	}
 
-	@PostMapping("/playlist/edit/summit")
-	public String editarPlaylistSubmit(@ModelAttribute("playlistForm") Playlist playlist) {
-		playlistService.edit(playlist);
+	@PostMapping("/edit/summit")
+	public String editarPlaylistSubmit(@ModelAttribute("playlistForm") PlayList playList) {
+		playlistService.save(playList);
 		return "redirect:/playlist/list";
 	}
 
-	@GetMapping("/playlist/delete/{id}")
+	@GetMapping("/delete/{id}")
 	public String deletePlaylist(@PathVariable long id, Model model) {
-		Playlist playlist = playlistService.findById(id);
-		if (playlist != null) {
-			model.addAttribute("playlistForm", playlist);
+		PlayList playList = playlistService.findById(id);
+		if (playList != null) {
+			model.addAttribute("playlistForm", playList);
 			return "/backend/formularios/formularioDeletePlaylist";
 		} else {
 			return "redirect:/playlist/list";
 		}
 	}
 
-	@PostMapping("/playlist/delete/summit")
-	public String deletePlaylistSubmit(@ModelAttribute("playlistForm") Playlist playlist) {
-		playlistService.delete(playlist);
+	@PostMapping("/delete/summit")
+	public String deletePlaylistSubmit(@ModelAttribute("playlistForm") PlayList playList) {
+		playlistService.delete(playList);
 		return "redirect:/playlist/list";
 	}
 
@@ -80,11 +80,11 @@ public class PlaylistController {
 	 * "admin/list-categoria"; }
 	 * 
 	 * @GetMapping("/admin/formularioPlayList") public String nuevaPlaylist(Model
-	 * model) { model.addAttribute("playlist", new Playlist()); return
+	 * model) { model.addAttribute("playlist", new PlayList()); return
 	 * "admin/form-playlist"; }
 	 * 
 	 * @PostMapping("/admin/listadoPlaylist") public String
-	 * submitNuevaPlaylist(@ModelAttribute("playlist") Playlist playlist, Model
+	 * submitNuevaPlaylist(@ModelAttribute("playlist") PlayList playlist, Model
 	 * model) {
 	 * 
 	 * playlistService.save(playlist);
@@ -95,7 +95,7 @@ public class PlaylistController {
 	 * @GetMapping("/borrar/{id}") public String borrarCategoria(@PathVariable("id")
 	 * Long id, Model model) {
 	 * 
-	 * Playlist playlist = playlistService.findById(id );
+	 * PlayList playlist = playlistService.findById(id );
 	 * 
 	 * if (playlist != null) {
 	 * 

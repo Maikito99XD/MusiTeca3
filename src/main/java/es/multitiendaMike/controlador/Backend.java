@@ -12,16 +12,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import es.multitiendaMike.hibernate.Playlist;
-import es.multitiendaMike.modelo.repositorios.CancionRepository;
-import es.multitiendaMike.modelo.repositorios.PlayListRepository;
-import es.multitiendaMike.modelo.servicios.CancionService;
+import es.multitiendaMike.repositorios.CancionRepository;
+import es.multitiendaMike.repositorios.PlayListRepository;
+import es.multitiendaMike.servicios.CancionService;
 
 @Controller
 public class Backend {
 	
 	//@Autowired
-	//private PlayListRepository playlistRepository;
+	//private PlayListService playlistService;
 	
 	@GetMapping({"/admin"})
 	public String admin(Model model) throws MalformedURLException {
@@ -41,6 +40,10 @@ public class Backend {
 	public String formularioPlaylist(Model model) throws MalformedURLException{
 		return "/backend/formularios/formularioAddPlaylist";
 	}
+	@GetMapping({"/genero/new"})
+	public String formularioGenero(Model model) throws MalformedURLException{
+		return "/backend/formularios/formularioAddEditGenero";
+	}
 	/*
 	@GetMapping({"/admin/listadoCanciones"})
 	public String listadoCanciones(Model model) throws MalformedURLException{
@@ -55,8 +58,8 @@ public class Backend {
 	}
 	
 	@PostMapping("/listadoPlaylist")
-	public Playlist save(@RequestBody Playlist objPlaylist) {
-		return playlistRepository.save(objPlaylist);
+	public PlayList save(@RequestBody PlayList objPlaylist) {
+		return playlistService.save(objPlaylist);
 	}
 	*/
 }

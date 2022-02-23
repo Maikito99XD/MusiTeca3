@@ -16,16 +16,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import es.multitiendaMike.modelo.servicios.PlayListService;
+import es.multitiendaMike.servicios.PlayListService;
 
 
 @SuppressWarnings("unused")
 @Controller
-@RequestMapping("/")
 public class Frontend {
 		
 	
-	@GetMapping({"/","","/home","/inicio","/index"})
+	@GetMapping({"/", "/index"})
 	public String inicio (Model model) throws MalformedURLException {
 		
 		InetAddress addr= null;
