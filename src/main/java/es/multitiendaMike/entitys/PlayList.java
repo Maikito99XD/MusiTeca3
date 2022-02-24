@@ -32,6 +32,14 @@ public class PlayList {
 		this.canciones = new ArrayList<>();
 	}
 
+	
+	public PlayList(long id, String nombre, int valoracion, List<Cancion> canciones) {
+		this.id = id;
+		this.nombre = nombre;
+		this.valoracion = valoracion;
+		this.canciones = canciones;
+	}
+
 	public long getId() {
 		return this.id;
 	}

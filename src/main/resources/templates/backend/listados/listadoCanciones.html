@@ -52,7 +52,7 @@
 	<div class="container">
 
 		<div class="starter-template">
-			<h1>Listado de playlist</h1>
+			<h1>Listado de canciones</h1>
 			<table class="table">
 				<thead>
 					<tr>
@@ -68,8 +68,8 @@
 						<td th:text="${canciones.nombre}">Banda rock</td>
 						<td th:text="${canciones.enlaceCancion}">2</td>
 						<td th:text="${canciones.genero.getNombre()}">2</td>
-						<td><a class="btn btn-outline-info btn-info" th:href="@{/cancionest/edit/{id}(id=${canciones.id})}"><i class="bi bi-pencil-square"></i></a>
-                        <a class="btn btn-outline-danger btn-danger" th:href="@{/canciones/edit/{id}(id=${canciones.id})}"><i class="bi bi-trash"></i></a></td>
+						<td><a class="btn btn-outline-info btn-info" th:href="@{/cancion/edit/{id}(id=${canciones.id})}"><i class="bi bi-pencil-square"></i></a>
+                        <a class="btn btn-outline-danger btn-danger" th:href="@{/cancion/delete/{id}(id=${canciones.id})}"><i class="bi bi-trash"></i></a></td>
 					</tr>
 				</tbody>
 			</table>

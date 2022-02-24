@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import es.multitiendaMike.entitys.Cancion;
 import es.multitiendaMike.entitys.Genero;
@@ -16,6 +17,7 @@ import es.multitiendaMike.servicios.CancionService;
 import es.multitiendaMike.servicios.GeneroService;
 
 @Controller
+@RequestMapping("/cancion")
 public class CancionesController {
 	
 	@Autowired
@@ -24,19 +26,20 @@ public class CancionesController {
 	@Autowired
 	GeneroService generoService;
 	
-	@GetMapping("/cancion/list")
+	@GetMapping("/list")
 	public String listadoCanciones(Model model) {
 		model.addAttribute("listaCanciones", cancionService.findAll());
 		return "/backend/listados/listadoCanciones";
 	}
 
-	@GetMapping("/cancion/nuevaCancion")
+	@GetMapping("/nuevaCancion")
 	public String nuevaCancionForm(Model model) {
 		model.addAttribute("cancionForm", new Cancion());
+		model.addAttribute("generos", generoService.findAll());
 		return "/backend/formularios/formularioAddEditCancion";
 	}
 
-	@PostMapping("/cancion/new/summit")
+	@PostMapping("/new/summit")
 	public String nuevaCancionSubmit(@ModelAttribute("cancionForm") Cancion nuevaCancion) {
 		List<Genero> generos = generoService.findAll();
 		
@@ -51,7 +54,7 @@ public class CancionesController {
 		return "redirect:/cancion/list";
 	}
 
-	@GetMapping("/cancion/edit/{id}")
+	@GetMapping("/edit/{id}")
 	public String editarCancionForm(@PathVariable long id, Model model) {
 
 		Cancion cancion = cancionService.findById(id);
@@ -63,26 +66,26 @@ public class CancionesController {
 		}
 	}
 
-	@PostMapping("/cancion/edit/summit")
+	@PostMapping("/edit/summit")
 	public String editarCancionSubmit(@ModelAttribute("cancionForm") Cancion cancion) {
 		cancionService.save(cancion);
 		return "redirect:/cancion/list";
 	}
 
-	@GetMapping("/cancion/delete/{id}")
+	@GetMapping("/delete/{id}")
 	public String deleteCancion(@PathVariable long id, Model model) {
 		Cancion cancion = cancionService.findById(id);
 		if (cancion != null) {
 			model.addAttribute("cancionForm", cancion);
-			return "/backend/formularios/formularioDeletePlaylist";
+			return "/backend/formularios/formularioDeleteCancion";
 		} else {
-			return "redirect:/playlist/list";
+			return "redirect:/cancion/list";
 		}
 	}
 
-	@PostMapping("/cancion/delete/summit")
-	public String deletePlaylistSubmit(@ModelAttribute("playlistForm") Cancion cancion) {
+	@PostMapping("/delete/summit")
+	public String deleteCancionSubmit(@ModelAttribute("cancionForm") Cancion cancion) {
 		cancionService.delete(cancion);
-		return "redirect:/playlist/list";
+		return "redirect:/cancion/list";
 	}
 }

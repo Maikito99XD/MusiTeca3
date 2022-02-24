@@ -15,6 +15,8 @@
 
 <!-- Custom styles for this template -->
 <link href="/css/starter-template.css" rel="stylesheet">
+
+
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -47,50 +49,43 @@
 	</nav>
 
 	<div class="container">
-		<h1 th:text="${cancionForm.id != 0} ? 'Editar cancion' : 'Nueva cancion'">Nueva playlist></h1>
+		<h1>Borrar playlist></h1>
 		<div class="starter-template">
 			<div class="row">
 				<div class="col-md-offset-2 col-md-8">
-					<form method="post" action="#" th:action="${cancionForm.id != 0} ? @{/cancion/edit/summit} : @{/cancion/new/summit}"
+					<form method="post" action="#" th:action="@{/cancion/delete/summit}"
 					th:object="${cancionForm}">
-						<h1 th:text="${cancionForm.id != 0} ? 'Editar cancion' : 'Nueva cancion' ">Nueva playlist</h1>
-						<div class="form-group" style="display:none">
+						<h1>Borrar cancion</h1>
+						<div class="form-group">
 							<label for="id">ID</label> <input type="text"
 								class="form-control" id="id" placeholder="1" th:field="*{id}"
-								th:attrappend="readonly=${cancionForm.id != 0} ? 'readonly' : null">
+								readonly>
 						</div>
 
 						<div class="form-group">
 							<label for="nombre">Nombre</label> <input type="text"
 								class="form-control" id="nombre" placeholder="Nombre"
-								th:field="*{nombre}" />
+								th:field="*{nombre}" readonly />
 						</div>
 						<div class="form-group">
 							<label for="enlaceCancion">Enlace cancion</label> <input type="text"
-								class="form-control" id="enlaceCancion" placeholder="enlaceCancion"
-								th:field="*{enlaceCancion}" />
+								class="form-control" id="enlaceCancion"
+								placeholder="1-5" th:field="*{enlaceCancion}" readonly />
 						</div>
 						<div class="form-group">
-							<select th:field="*{genero}" name="generosListados">
-							   <div th:each="genero: ${genero}">
-							   		<option th:text="${genero.nombre}" th:values="${genero.id}"/>
-							   </div>
-							</select>
+							<label for="genero">Genero</label> <input type="text"
+								class="form-control" id="genero"
+								placeholder="Rock" th:field="*{genero}" readonly />
 						</div>
-						<!--
-						<div class="form-group">
-							<label for="nombreGenero">Nombre genero</label> <input type="text"
-								class="form-control" id="nombreGenero" placeholder="nombreGenero"
-								th:field="*{genero}" />
-						</div>
-						-->
-						<button type="submit" class="btn btn-default">Enviar</button>
+						<button type="submit" class="btn btn-default">Borrar</button>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- /.container -->
+
+
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
