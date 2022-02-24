@@ -71,13 +71,19 @@
 								th:field="*{enlaceCancion}" />
 						</div>
 						<div class="form-group">
+							<select th:field="*{genero}" >
+							   	 <option th:each="genero: ${generos}" th:text="${genero.nombre}" th:value="${genero.id}">
+							</select>
+						</div>
+						<!--
+						<div class="form-group">
 							<select th:field="*{genero}" name="generosListados">
 							   <div th:each="genero: ${genero}">
 							   		<option th:text="${genero.nombre}" th:values="${genero.id}"/>
 							   </div>
 							</select>
 						</div>
-						<!--
+						
 						<div class="form-group">
 							<label for="nombreGenero">Nombre genero</label> <input type="text"
 								class="form-control" id="nombreGenero" placeholder="nombreGenero"

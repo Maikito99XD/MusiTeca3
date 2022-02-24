@@ -58,6 +58,7 @@ public class CancionesController {
 	public String editarCancionForm(@PathVariable long id, Model model) {
 
 		Cancion cancion = cancionService.findById(id);
+		model.addAttribute("generos", generoService.findAll());
 		if (cancion != null) {
 			model.addAttribute("cancionForm", cancion);
 			return "/backend/formularios/formularioAddEditCancion";
@@ -75,6 +76,7 @@ public class CancionesController {
 	@GetMapping("/delete/{id}")
 	public String deleteCancion(@PathVariable long id, Model model) {
 		Cancion cancion = cancionService.findById(id);
+		model.addAttribute("generos", generoService.findAll());
 		if (cancion != null) {
 			model.addAttribute("cancionForm", cancion);
 			return "/backend/formularios/formularioDeleteCancion";
