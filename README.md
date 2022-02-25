@@ -4,6 +4,10 @@ Proyecto musiteca mike steel marín
 Antes de hacer nada hay que tener en cuenta que en el proyecto se nos crean una serie de tablas en la base de datos,
 nada más iniciar.
 
+**Funcionamiento**
+
+La página lo que hará será mostrar información sobre el genero de cada canción, el genero al que pertenece y la playlist, donde el usuario podrá crear objetos del tipo canción, genero y playlist, los cuales se guardarán en la base de datos, además de que los podrá editar y borrar además de los que ya existen en la base de datos.
+
 **Comandos para entrar en cada sitio**
 
 "/" entra en la raiz
