@@ -65,4 +65,6 @@ La creación de objetos(playlist, canciones, generos), se le pedirán los datos 
 
 **Relación base de datos**
 
-La relación de base de datos está en la carpeta doc, mediante un png o jpg
+La relación de base de datos está en la carpeta doc, por si no funcionara
+
+![alt text](https://raw.githubusercontent.com/Maikito99XD/MusiTeca3/main/doc/baseDeDatosMusiteca.PNG?token=GHSAT0AAAAAABRU3EIS6YZZ6MKM7TNWNL5WYQY72WA)
