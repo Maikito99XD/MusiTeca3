@@ -61,4 +61,8 @@ Los listados son simplemente para que el usuario sepa lo que hay en la base de d
 
 **Creación**
 
-La creación de objetos(playlist, canciones, generos), se le pedirán los datos pertinentes de cada objeto al usuario donde le llevará al formulario de creación del objeto y tras rellenar todos los datos se insertará en la base de datos 
+La creación de objetos(playlist, canciones, generos), se le pedirán los datos pertinentes de cada objeto al usuario donde le llevará al formulario de creación del objeto y tras rellenar todos los datos se insertará en la base de datos.
+
+**Relación base de datos**
+
+La relación de base de datos está en la carpeta doc, mediante un png o jpg
