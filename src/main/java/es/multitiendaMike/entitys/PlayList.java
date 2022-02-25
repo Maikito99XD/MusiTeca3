@@ -72,6 +72,10 @@ public class PlayList {
 		this.canciones = canciones;
 	}
 	
+	public void addCancion(Cancion cancion) {
+		canciones.add(cancion);
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
